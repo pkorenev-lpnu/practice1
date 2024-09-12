@@ -1,0 +1,5 @@
+#!/bin/sh
+
+set -eo pipefail
+
+docker run -it --rm $(docker build -q .)
