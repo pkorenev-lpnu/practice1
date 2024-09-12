@@ -6,35 +6,15 @@
 
 using namespace std;
 
-int main() {
-    cout << "hello" << endl;
-
-    int n;
-    double a, b, h, x, y, min_x, min_y, max_x, max_y, eps = 1e-9;
-
-    do {
-        do {
-            cout << "Enter a: ";
-            cin >> a;
-        } while(abs(a * a - 3.0) < eps);
-
-        do {
-            cout << "Enter b: ";
-            cin >> b;
-        } while(abs(b * b - 3.0) < eps);
-    } while(a > b || abs(a - b) < eps);
-
-    do {
-        cout << "Enter n: ";
-        cin >> n;
-    } while(a <= 0);
+void calculate_and_print_results(double a, double b, int n) {
+    double h, x, y, min_x, min_y, max_x, max_y;
 
     h = (b - a) / n;
     
     x = a;
     y = (x + sin(2 * x)) / (x*x - 3);
 
-    cout << "\nx=\ty=" << endl;
+    cout << "\nx\ty" << endl;
 
     cout.width(5);
     cout.precision(5);
@@ -63,7 +43,32 @@ int main() {
         }
     }
 
-    cout << "\nThe largest value taken by the function is " << max_y << " at " << max_x << "\nThe smallest value taken by the function is " << min_y << " at " << min_x;
+    cout << "\nThe largest value taken by the function is " << max_y << " at " << max_x 
+         << "\nThe smallest value taken by the function is " << min_y << " at " << min_x;
+}
+
+int main() {
+    int n;
+    double a, b, eps = 1e-9;
+
+    do {
+        do {
+            cout << "Enter a: ";
+            cin >> a;
+        } while(abs(a * a - 3.0) < eps);
+
+        do {
+            cout << "Enter b: ";
+            cin >> b;
+        } while(abs(b * b - 3.0) < eps);
+    } while(a > b || abs(a - b) < eps);
+
+    do {
+        cout << "Enter n: ";
+        cin >> n;
+    } while(n <= 0);
+
+    ::calculate_and_print_results(a, b, n);
 
     cout << "\nEnd of program" << endl;
 
